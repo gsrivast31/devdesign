@@ -1,0 +1,99 @@
+<template name="categoriesList">
+	<!-- <div id="container" class="{{menuOpen}} {{cordova}}"> -->
+		<section id="menu"> 
+
+			{{#if isLoggedIn}}
+	      <div class="btns-group-vertical">
+	        <a href="#" class="js-user-menu btn-secondary">
+	          {{#if userMenuOpen}}
+	            <span class="icon-up"></span>
+	            {{else}}
+	            <span class="icon-down"></span>
+	          {{/if}}
+	          {{username}}
+	        </a>
+	        {{#if userMenuOpen}}
+	        	<a class="js-editaccount btn-secondary" href="/account">{{_ "edit_account"}}</a>
+	          <a class="js-logout btn-secondary" href="/sign-out">{{_ "sign_out"}}</a>
+	        {{/if}}
+	      </div>
+	    {{else}}
+	      <div class="btns-group">
+	      	<a class="btn-secondary" href="/sign-in">{{_ "sign_in"}}</a>
+    			<a class="btn-secondary" href="/sign-up">{{_ "join"}}</a>
+	      </div>
+	    {{/if}}
+
+	    {{#if totalCount}}
+		    <div class="btns-group-vertical">
+		    	<a href="#" class="js-category-menu btn-secondary">
+		        {{#if categoryMenuOpen}}
+		          <span class="icon-up"></span>
+		          {{else}}
+		          <span class="icon-down"></span>
+		        {{/if}}
+		        {{firstChild}}
+		      </a>
+		      {{#if categoryMenuOpen}}
+			      {{#each categories}}
+			      	<span class="btn-secondary js-top-category">{{name}}</span>
+			      {{/each}}
+		      {{/if}}
+		    </div>
+			{{/if}}
+			
+		  <div class="list-categories">
+		  	<span class="list-category all-items {{activeListClass}}">
+		  		{{_ "All Items"}}
+		  		<span class="count-category">{{totalCount}}</span>
+		  	</span>
+
+		   	{{#each childCategories}}
+		  		<span class="list-category {{activeListClass}}">
+		  			{{#if hasChild this}}
+		  				{{#if isActive}}
+		  					{{#if listExpanded}}
+		  					  <span><i class="icon-up"></i></span>
+	              {{else}}
+	                <span><i class="icon-down"></i></span>
+	              {{/if}}
+	            {{else}}
+	              <span><i class="icon-down"></i></span>
+	            {{/if}}
+	          {{/if}}
+
+		  			{{name}}
+		  			<span class="count-category">{{childrenCount}}</span>
+		  		</span>
+
+		  		{{#if isActive}}
+	          {{#if listExpanded}}
+	            {{#each childlists this}}
+	              <span class="list-category {{activeListClass}} subcategory">
+	              	{{name}}
+		  						<span class="count-category">{{childCount}}</span>
+		  				  </span>
+	            {{/each}}
+	          {{/if}}
+	        {{/if}}
+				{{/each}}
+		  </div>
+
+		</section>
+
+		<!-- {{#unless connected}}
+      <div class="notifications">
+        <div class="notification">
+          <span class="icon-sync"></span>
+          <div class="meta">
+            <div class="title-notification">Trying to connect</div>
+            <div class="description">There seems to be a connection issue</div>
+          </div>
+        </div>
+      </div>
+    {{/unless}} -->
+
+    <!-- <div class="content-overlay"></div> -->
+
+	<!-- </div> -->
+</template>      

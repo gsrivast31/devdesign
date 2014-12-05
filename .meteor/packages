@@ -1,0 +1,74 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+# Meteor Packages
+
+standard-app-packages
+backbone
+accounts-base
+accounts-password
+accounts-twitter
+spiderable
+email
+accounts-facebook
+service-configuration
+accounts-ui
+
+# Atmosphere Packages
+
+iron:router
+
+meteorhacks:fast-render
+meteorhacks:subs-manager
+meteorhacks:npm
+
+aldeed:autoform
+aldeed:collection2
+aldeed:simple-schema
+
+mrt:jquery-hotkeys
+mrt:cookies
+mrt:moment
+mrt:mailchimp
+
+cmather:handlebars-server
+sacha:spin
+sacha:juice
+chuangbo:marked
+percolatestudio:synced-cron
+npm-container
+matb33:collection-hooks
+djedi:sanitize-html
+rajit:bootstrap3-datepicker
+bengott:avatar
+jparker:gravatar
+
+tap:i18n
+
+# Telescope Packages (Required)
+
+telescope-base
+telescope-lib
+telescope-i18n
+
+# Telescope Packages (Optional)
+
+telescope-theme-base
+telescope-module-share
+telescope-api
+telescope-rss
+telescope-search
+telescope-theme-hubble
+telescope-email
+telescope-module-embedly
+telescope-newsletter
+telescope-daily
+telescope-kadira
+
+telescope-notifications
+
+# Accounts Templates
+useraccounts:unstyled
+telescope-theme-devdesign
