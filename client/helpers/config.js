@@ -27,7 +27,7 @@ SharrreOptions={
 	  // facebook: {layout: 'box_count'},
 	  twitter: {
 	    count: 'vertical',
-	    via: 'TelescopeApp'
+	    via: 'DevDesignApp'
 	  }
 	},
 	enableHover: false,

@@ -47,28 +47,28 @@ jparker:gravatar
 
 tap:i18n
 
-# Telescope Packages (Required)
+# DevDesign Packages (Required)
 
-telescope-base
-telescope-lib
-telescope-i18n
+devdesign-base
+devdesign-lib
+devdesign-i18n
 
-# Telescope Packages (Optional)
+# DevDesign Packages (Optional)
 
-telescope-theme-base
-telescope-module-share
-telescope-api
-telescope-rss
-telescope-search
-telescope-theme-hubble
-telescope-email
-telescope-module-embedly
-telescope-newsletter
-telescope-daily
-telescope-kadira
+devdesign-theme-base
+devdesign-module-share
+devdesign-api
+devdesign-rss
+devdesign-search
+devdesign-theme-hubble
+devdesign-email
+devdesign-module-embedly
+devdesign-newsletter
+devdesign-daily
+devdesign-kadira
 
-telescope-notifications
+devdesign-notifications
 
 # Accounts Templates
 useraccounts:unstyled
-telescope-theme-devdesign
+devdesign-theme-updated
