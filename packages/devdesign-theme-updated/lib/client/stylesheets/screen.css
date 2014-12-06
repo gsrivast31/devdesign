@@ -42,8 +42,30 @@ select {
 }
 
 .search.empty .search-field {
-    background: white;
-  }
+  background: white;
+}
+
+.loading-page {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.form-block {
+  text-align: center;
+}
+
+.view-menu-items {
+  text-align: center;
+}
+
+.view-item {
+  padding: 0px 20px 0px 20px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.view-item.active {
+  color: rgb(0, 0, 0);
+}
 
 body{
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -98,7 +120,7 @@ body{
 
 .grid {
 	margin-left: 0px;
-	margin-top: 0px;
+	margin-top: 10px;
 	margin-right: 0px;
 	margin-bottom: 0px;
 	width: auto;
@@ -385,4 +407,5 @@ body{
 .btns-group [class*="btn-"] + [class*="btn-"] {
   margin-left: -1px;
 }
+
 

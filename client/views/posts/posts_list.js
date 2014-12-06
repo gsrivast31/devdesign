@@ -2,6 +2,9 @@ Template[getTemplate('posts_list')].helpers({
   post_item: function () {
     return getTemplate('post_item');
   },
+  viewsMenu: function() {
+    return getTemplate('viewsMenu');
+  },
   posts : function () {
     if(this.postsList){ // XXX
       this.postsList.rewind();    

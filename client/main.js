@@ -15,6 +15,10 @@ adminNav = adminNav.concat([
     label: 'Pending'
   },
   {
+    route: 'posts_digest_default',
+    label: 'Digest'
+  }, 
+  {
     route: 'all-users',
     label: 'Users'
   },

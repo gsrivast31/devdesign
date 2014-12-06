@@ -101,6 +101,10 @@ Meteor.startup(function () {
     childlists: function(parent) {
       return Categories.find({parent: parent._id});
     },
+    categoryCount: function() {
+      var category = Categories.findOne({_id : Session.get(TOP_CATEGORY) });
+      return category ? (category.childCount !== undefined ? category.childCount : 0) : 0;
+    },
     totalCount: function() {
       var category = Categories.findOne({_id : Session.get(TOP_CATEGORY_FIRST_CHILD) });
       return category ? (category.childCount !== undefined ? category.childCount : 0) : 0;

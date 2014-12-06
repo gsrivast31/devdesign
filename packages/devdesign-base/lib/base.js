@@ -9,9 +9,9 @@ addToSettingsSchema = [];
 
 
 // array containing nav items; initialize with views menu and admin menu
-primaryNav = ['viewsMenu', 'adminMenu'];
+primaryNav = ['adminMenu'];
 
-secondaryNav = ['userMenu', 'notificationsMenu', 'submitButton'];
+secondaryNav = ['notificationsMenu', 'submitButton'];
 
 // array containing items in the admin menu
 adminNav = [];
@@ -29,10 +29,6 @@ viewNav = [
   {
     route: 'posts_best',
     label: 'best'
-  },
-  {
-    route: 'posts_digest_default',
-    label: 'digest'
   } 
 ];
 
@@ -44,18 +40,21 @@ viewParameters = {}
 
 viewParameters.top = function (terms) {
   return {
+    find: {'categories._id': terms.category},
     options: {sort: {sticky: -1, score: -1}}
   };
 }
 
 viewParameters.new = function (terms) {
   return {
+    find: {'categories._id': terms.category},
     options: {sort: {sticky: -1, postedAt: -1}}
   };
 }
 
 viewParameters.best = function (terms) {
   return {
+    find: {'categories._id': terms.category},
     options: {sort: {sticky: -1, baseScore: -1}}
   };
 }

@@ -45,20 +45,6 @@ postHeading.push({
 // push "categoriesMenu" template to primaryNav
 primaryNav.push('topCategory');
 
-var viewRemovals = function() {
-  var index = primaryNav.indexOf('viewsMenu');
-  if (index !== -1) {
-    primaryNav.splice(index, 1);
-  }
-
-  index = secondaryNav.indexOf('userMenu');
-  if (index !== -1) {
-    secondaryNav.splice(index, 1);
-  }
-}
-
-viewRemovals();
-
 // push "categories" property to addToPostSchema, so that it's later added to postSchema
 addToPostSchema.push(
   {
@@ -72,17 +58,21 @@ addToPostSchema.push(
 
 var getCheckedCategories = function (properties) {
   properties.categories = [];
+
+  var categoryIds = [];
+
   $('input[name=category]:checked').each(function() {
     var categoryId = $(this).val();
+    categoryIds.push(categoryId);
 
     var category = Categories.findOne(categoryId);
-
     properties.categories.push(category);
 
     while (category.parent != undefined) {
       category = Categories.findOne(category.parent);
 
-      if (properties.categories.indexOf(category) === -1) {
+      if (categoryIds.indexOf(category._id) === -1) {
+        categoryIds.push(category._id);
         properties.categories.push(category);
       }
     }   
@@ -113,4 +103,8 @@ Meteor.startup(function () {
 
 getCategoryUrl = function(_id){
   return getSiteUrl()+'category/'+_id;
+};
+
+getViewUrl = function(_id, view){
+  return getSiteUrl()+view+'/'+_id;
 };

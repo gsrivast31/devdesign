@@ -1,6 +1,6 @@
 Template[getTemplate('viewsMenu')].helpers({
-  menuItem: function () {
-    return getTemplate('menuItem');
+  viewItem: function () {
+    return getTemplate('viewItem');
   },
   views: function () {
     return viewNav;

@@ -17,9 +17,6 @@ Template[getTemplate('nav')].helpers({
   getTemplate: function () {
     return getTemplate(this);
   },
-  userMenu: function () {
-    return getTemplate('userMenu');
-  },
   site_title: function(){
     return getSetting('title');
   },

@@ -1,7 +1,16 @@
 Meteor.startup(function () {
   Template[getTemplate('categories')].helpers({
-    categories: function(){
-      return Categories.find({}, {sort: {order: 1, name: 1}});
+    topCategories: function(){
+      var dev_category = Categories.findOne({slug:'developers'});
+      var design_category = Categories.findOne({slug:'designers'});
+
+      return [dev_category, design_category];
+    },
+    firstLevelCategory: function() {
+      return Categories.find({parent: this._id}, {sort: {order: 1, name: 1}});
+    },
+    secondLevelCategory: function() {
+      return Categories.find({parent: this._id}, {sort: {order: 1, name: 1}});
     },
     categoryItem: function () {
       return getTemplate('categoryItem');

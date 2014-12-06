@@ -7,19 +7,19 @@
         <label>Name</label>
         <div class="controls"><input id="name" type="text" value="" /></div>
       </div>
-      <!-- <div class="control-group">
-        <label>Order</label>
-        <div class="controls"><input id="order" type="number" value="" /></div>
-      </div> -->
       <div class="control-group"> 
         <label>Parent</label>
         <div class="controls">
           <select id="parentcategory">
             <option disabled selected>Choose a parent category</option>
-            {{#each categories}}
-              <option value="{{_id}}">
-              {{name}}
-              </option>
+            {{#each topCategories}}
+              <option value="{{_id}}">{{name}}</option>
+              {{#each firstLevelCategory}}
+                <option value="{{_id}}">&nbsp;&nbsp;{{name}}</option>
+                {{#each secondLevelCategory}}
+                  <option value="{{_id}}">&nbsp;&nbsp;&nbsp;&nbsp;{{name}}</option>
+                {{/each}}
+              {{/each}}
             {{/each}}
           </select>
         </div>
@@ -28,10 +28,10 @@
         <input type="submit" class="button" value="Submit" />
       </div>
     </form>
-    <ul>
+    <!-- <ul>
       {{#each categories}}
         {{> UI.dynamic template=categoryItem}}
       {{/each}}
-    </ul>
+    </ul>-->
   </div>
 </template>
