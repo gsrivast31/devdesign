@@ -126,17 +126,10 @@ postHeading = [
     order: 1
   },
   {
-    template: 'postDescription', 
-    order: 3
+    template: 'postDomain', 
+    order: 5
   }
 ];
-
-postURL = [
-  {
-    template: 'postDomain',
-    order: 1  
-  }
-]
 
 postMeta = [
   {

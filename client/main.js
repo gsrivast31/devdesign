@@ -37,8 +37,6 @@ postModules = _.sortBy(postModules, function(module){return _.indexOf(modulePosi
 
 postHeading = _.sortBy(postHeading, 'order');
 
-postURL = _.sortBy(postURL, 'order');
-
 postMeta = _.sortBy(postMeta, 'order');
 
 Meteor.startup(function () {
