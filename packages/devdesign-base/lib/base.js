@@ -126,8 +126,15 @@ postHeading = [
     order: 1
   },
   {
-    template: 'postDomain', 
-    order: 5
+    template: 'postDescription', 
+    order: 3
+  }
+];
+
+postURL = [
+  {
+    template: 'postDomain',
+    order: 1  
   }
 ]
 
@@ -144,7 +151,7 @@ postMeta = [
     template: 'postAdmin', 
     order: 5
   }
-]
+];
 // ------------------------------ Callbacks ------------------------------ //
 
 postSubmitRenderedCallbacks = [];

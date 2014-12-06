@@ -11,9 +11,6 @@ Meteor.startup(function () {
     },
     secondLevelCategory: function() {
       return Categories.find({parent: this._id}, {sort: {order: 1, name: 1}});
-    },
-    categoryItem: function () {
-      return getTemplate('categoryItem');
     }
   });
 
@@ -23,7 +20,7 @@ Meteor.startup(function () {
 
       var name = $('#name').val();
       var numberOfCategories = Categories.find().count();
-      var order = parseInt($('#order').val()) || (numberOfCategories + 1);
+      var order = numberOfCategories + 1;
       var parent = $('#parentcategory').val();
       var slug = slugify(name);
       

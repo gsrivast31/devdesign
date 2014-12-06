@@ -1,0 +1,10 @@
+<template name="editCategories">
+  <div class="grid-small grid-module dialog admin">
+    <h2>Edit Categories</h2>
+    <ul>
+      {{#each categories}}
+        {{> UI.dynamic template=categoryItem}}
+      {{/each}}
+    </ul>
+  </div>
+</template>

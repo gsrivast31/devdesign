@@ -40,45 +40,44 @@
 			      {{/each}}
 		      {{/if}}
 		    </div>
-			{{/if}}
 			
-		  <div class="list-categories">
-		  	<span class="list-category all-items {{activeListClass}}">
-		  		{{_ "All Items"}}
-		  		<span class="count-category">{{totalCount}}</span>
-		  	</span>
+			  <div class="list-categories">
+			  	<span class="list-category all-items {{activeListClass}}">
+			  		{{_ "All Items"}}
+			  		<span class="count-category">{{totalCount}}</span>
+			  	</span>
 
-		   	{{#each childCategories}}
-		  		<span class="list-category {{activeListClass}}">
-		  			{{#if hasChild this}}
-		  				{{#if isActive}}
-		  					{{#if listExpanded}}
-		  					  <span><i class="icon-up"></i></span>
-	              {{else}}
-	                <span><i class="icon-down"></i></span>
-	              {{/if}}
-	            {{else}}
-	              <span><i class="icon-down"></i></span>
-	            {{/if}}
-	          {{/if}}
+			   	{{#each childCategories}}
+			  		<span class="list-category {{activeListClass}}">
+			  			{{#if hasChild this}}
+			  				{{#if isActive}}
+			  					{{#if listExpanded}}
+			  					  <span><i class="icon-up"></i></span>
+		              {{else}}
+		                <span><i class="icon-down"></i></span>
+		              {{/if}}
+		            {{else}}
+		              <span><i class="icon-down"></i></span>
+		            {{/if}}
+		          {{/if}}
 
-		  			{{name}}
-		  			<span class="count-category">{{childrenCount}}</span>
-		  		</span>
+			  			{{name}}
+			  			<span class="count-category">{{childrenCount}}</span>
+			  		</span>
 
-		  		{{#if isActive}}
-	          {{#if listExpanded}}
-	            {{#each childlists this}}
-	              <span class="list-category {{activeListClass}} subcategory">
-	              	{{name}}
-		  						<span class="count-category">{{childCount}}</span>
-		  				  </span>
-	            {{/each}}
-	          {{/if}}
-	        {{/if}}
-				{{/each}}
-		  </div>
-
+			  		{{#if isActive}}
+		          {{#if listExpanded}}
+		            {{#each childlists this}}
+		              <span class="list-category {{activeListClass}} subcategory">
+		              	{{name}}
+			  						<span class="count-category">{{childCount}}</span>
+			  				  </span>
+		            {{/each}}
+		          {{/if}}
+		        {{/if}}
+					{{/each}}
+			  </div>
+			{{/if}}
 		</section>
 
 		<!-- {{#unless connected}}

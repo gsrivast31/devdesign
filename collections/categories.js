@@ -37,10 +37,10 @@ viewParameters.category = function (terms) {
 }
 
 // push "categories" modules to postHeading
-postHeading.push({
+/*postHeading.push({
   template: 'postCategories',
   order: 3
-});
+});*/
   
 // push "categoriesMenu" template to primaryNav
 primaryNav.push('topCategory');

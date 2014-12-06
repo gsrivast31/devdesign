@@ -301,7 +301,7 @@
 			color:$grey;
 		}
 	}
-	.post-domain{
+	.post-description{
 		color:$light-text;
 		@include small{
 			font-size: 13px;
@@ -312,6 +312,20 @@
 		font-weight:normal;
 	}
 }
+.post-url{
+	margin-bottom:3px;
+	line-height: 1.2;
+	@include small{
+		line-height: 1.5;
+		font-size: 13px;
+	}
+	color:$light-text;
+	@include medium-large{
+		font-size:14px;
+	}
+	font-weight:normal;
+}
+
 .post-categories{
 	text-align: right;
 
