@@ -43,4 +43,11 @@ postStats = _.sortBy(postStats, 'order');
 
 Meteor.startup(function () {
   $('#rss-link').attr('title', i18n.t('new_posts'));
+
+  var developerId = Categories.findOne({slug: 'developers'})._id;
+  var designerId = Categories.findOne({slug: 'designers'})._id;
+
+  Session.set('developerId', developerId);
+  Session.set('designerId', designerId);
+  Session.set('topCategory', developerId);
 });

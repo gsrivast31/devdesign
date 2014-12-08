@@ -1,8 +1,10 @@
 var TOP_CATEGORY = 'topCategory';
 Session.setDefault(TOP_CATEGORY, '');
 
-var TOP_CATEGORY_FIRST_CHILD = 'topCategoryFirstChild';
-Session.setDefault(TOP_CATEGORY_FIRST_CHILD, '');
+var TOP_CATEGORY_FIRST_CHILD_DEVELOPER = 'topCategoryFirstChildDeveloper';
+Session.setDefault(TOP_CATEGORY_FIRST_CHILD_DEVELOPER, '');
+var TOP_CATEGORY_FIRST_CHILD_DESIGNER = 'topCategoryFirstChildDesigner';
+Session.setDefault(TOP_CATEGORY_FIRST_CHILD_DESIGNER, '');
 
 Meteor.startup(function () {
 
@@ -20,24 +22,35 @@ Meteor.startup(function () {
     'click .developers': function(event) {
       event.preventDefault();
 
-      var category = Categories.findOne({slug:'developers'});
-	     if (category != undefined) {
-	      Session.set(TOP_CATEGORY, category._id);
-	      var firstChild = Categories.findOne({parent: category._id});
-	      Session.set(TOP_CATEGORY_FIRST_CHILD, firstChild._id);
-	      Router.go("/category/" + firstChild._id);
+      var categoryId = Session.get('developerId');
+	     if (categoryId != undefined) {
+	      Session.set(TOP_CATEGORY, categoryId);
+
+	      var active_child = Session.get(TOP_CATEGORY_FIRST_CHILD_DEVELOPER);
+	      if (active_child === '') {
+	      	var firstChild = Categories.findOne({parent: categoryId});
+	      	active_child = firstChild._id;
+	      	Session.set(TOP_CATEGORY_FIRST_CHILD_DEVELOPER, firstChild._id);
+	      }
+	      Router.go("/category/" + active_child);
       }
     },
 
     'click .designers' : function(event) {
       event.preventDefault();
 
-	    var category = Categories.findOne({slug:'designers'});
-	    if (category != undefined) {
-	    	Session.set(TOP_CATEGORY, category._id);
-	    	var firstChild = Categories.findOne({parent: category._id});
-	    	Session.set(TOP_CATEGORY_FIRST_CHILD, firstChild._id);
-	    	Router.go("/category/" + firstChild._id);
+	    var categoryId = Session.get('designerId');
+	    if (categoryId != undefined) {
+	    	Session.set(TOP_CATEGORY, categoryId);
+
+	    	var active_child = Session.get(TOP_CATEGORY_FIRST_CHILD_DESIGNER);
+	      if (active_child === '') {
+	      	var firstChild = Categories.findOne({parent: categoryId});
+	      	active_child = firstChild._id;
+	      	Session.set(TOP_CATEGORY_FIRST_CHILD_DESIGNER, firstChild._id);
+	      }
+	      
+	    	Router.go("/category/" + active_child);
       }
     }
   });

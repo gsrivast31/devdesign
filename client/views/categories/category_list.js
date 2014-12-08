@@ -8,7 +8,8 @@ var USER_LIST_COLLAPSED = 'userListCollapsed';
 Session.setDefault(USER_LIST_COLLAPSED, true);
 
 var TOP_CATEGORY = 'topCategory';
-var TOP_CATEGORY_FIRST_CHILD = 'topCategoryFirstChild';
+var TOP_CATEGORY_FIRST_CHILD_DEVELOPER = 'topCategoryFirstChildDeveloper';
+var TOP_CATEGORY_FIRST_CHILD_DESIGNER = 'topCategoryFirstChildDesigner';
 var USER_MENU_KEY = 'userMenuOpen';
 
 Meteor.startup(function () {
@@ -22,6 +23,24 @@ Meteor.startup(function () {
     return (category.parent && category.parent === Session.get(TOP_CATEGORY));
   };
 
+  var isTopCategoryDeveloper = function() {
+    return Session.get('developerId') === Session.get(TOP_CATEGORY);
+  };
+
+  var isTopCategoryDesigner = function() {
+    return Session.get('designerId') === Session.get(TOP_CATEGORY);
+  };
+
+  var topCategoryFirstChild = function() {
+    if (isTopCategoryDeveloper()) {
+      return Session.get(TOP_CATEGORY_FIRST_CHILD_DEVELOPER);
+    } else if (isTopCategoryDesigner()) {
+      return Session.get(TOP_CATEGORY_FIRST_CHILD_DESIGNER);
+    } else {
+      return '';
+    }
+  };
+
   Template[getTemplate('categoriesList')].helpers({
     categoryMenuOpen: function() {
       return Session.get(CATEGORY_MENU_KEY);
@@ -33,17 +52,29 @@ Meteor.startup(function () {
       return __('categories')
     },
     firstChild: function() {
-      var category = Categories.findOne({_id: Session.get(TOP_CATEGORY_FIRST_CHILD)});
-      return category ? category.name : '';
+      var first_child = topCategoryFirstChild();
+      if (first_child) {
+        var category = Categories.findOne({_id: first_child});
+        return category ? category.name : '';
+      }
+      return '';
     },
     categories: function(){
-      return Categories.find({
-        parent: Session.get(TOP_CATEGORY), 
-        _id : { $ne : Session.get(TOP_CATEGORY_FIRST_CHILD) }
-      }, {sort: {order: 1, name: 1}});
+      var first_child = topCategoryFirstChild();
+      if (first_child) {
+        return Categories.find({
+            parent: Session.get(TOP_CATEGORY), 
+            _id : { $ne : first_child }
+          }, {sort: {name: 1}});
+      } 
+      return [];
     },
     childCategories: function(){
-      return Categories.find({parent: Session.get(TOP_CATEGORY_FIRST_CHILD)}, {sort: {order: 1, name: 1}});
+      var first_child = topCategoryFirstChild();
+      if (first_child) {
+        return Categories.find({parent: first_child}, {sort: {name: 1}});
+      }
+      return [];
     },
     categoryLink: function () {
       return getCategoryUrl(this._id);
@@ -51,7 +82,7 @@ Meteor.startup(function () {
     activeListClass: function() {
       var current = Router.current();
       if (current.params._id === this._id || 
-        current.params._id === Session.get(TOP_CATEGORY_FIRST_CHILD) && this._id === undefined) {
+        current.params._id === topCategoryFirstChild() && this._id === undefined) {
         return 'active';
       } 
     },
@@ -78,7 +109,7 @@ Meteor.startup(function () {
       return Categories.find({parent:Session.get(TOP_CATEGORY)}).count();
     },
     totalCount: function() {
-      var category = Categories.findOne({_id : Session.get(TOP_CATEGORY_FIRST_CHILD) });
+      var category = Categories.findOne({_id : topCategoryFirstChild() });
       return category ? (category.childCount !== undefined ? category.childCount : 0) : 0;
     },
     childrenCount: function() {
@@ -110,7 +141,12 @@ Meteor.startup(function () {
     'click .js-top-category': function(event) {
       event.preventDefault();
 
-      Session.set(TOP_CATEGORY_FIRST_CHILD, this._id);
+      if (isTopCategoryDeveloper()) {
+        Session.set(TOP_CATEGORY_FIRST_CHILD_DEVELOPER, this._id);
+      } else if (isTopCategoryDesigner()) {
+        Session.set(TOP_CATEGORY_FIRST_CHILD_DESIGNER, this._id);
+      }
+      
       Session.set(CATEGORY_MENU_KEY, false);
 
       Router.go("/category/" + this._id);
@@ -121,7 +157,7 @@ Meteor.startup(function () {
 
       if (event.target.classList.contains("all-items") === true) {
         Session.set(USER_LIST_COLLAPSED, true);
-        Router.go("/category/" + Session.get(TOP_CATEGORY_FIRST_CHILD));
+        Router.go("/category/" + topCategoryFirstChild());
         return;
       }
 
