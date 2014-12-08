@@ -39,6 +39,8 @@ postHeading = _.sortBy(postHeading, 'order');
 
 postMeta = _.sortBy(postMeta, 'order');
 
+postStats = _.sortBy(postStats, 'order');
+
 Meteor.startup(function () {
   $('#rss-link').attr('title', i18n.t('new_posts'));
 });

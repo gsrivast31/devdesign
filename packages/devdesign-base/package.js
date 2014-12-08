@@ -23,6 +23,7 @@ Package.onUse(function (api) {
     'postModules',
     'postHeading',
     'postMeta',
+    'postStats',
     'modulePositions',
 
     'postSubmitRenderedCallbacks',

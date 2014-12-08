@@ -71,6 +71,25 @@ select {
   height: 100%
   background: #d2edf4;
 }
+
+.post-stats {
+  text-align: center;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  padding: 15px;
+}
+
+.post-stats .post-stat-item {
+  width: 16%;
+  display: inline-block;
+}
+
+.post-stats, .post-body {
+  margin: 15px;
+  border: 1px solid green;
+  border-radius: 0px;
+}
+
 body{
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: 400;

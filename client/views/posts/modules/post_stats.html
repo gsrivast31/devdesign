@@ -1,0 +1,7 @@
+<template name="post_stats">
+  <div class="post-stats markdown">
+  	{{#each postStats}}
+  		{{> UI.dynamic template=getTemplate data=..}}
+  	{{/each}}
+  </div>
+</template>

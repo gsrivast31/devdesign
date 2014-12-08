@@ -1,3 +1,13 @@
+var GitHubApi = Meteor.npmRequire('github');
+var markdown = Meteor.npmRequire('markdown').markdown;
+var github = new GitHubApi({version: "3.0.0"});
+
+github.authenticate({
+  type: "oauth",
+  key: "ebd6a922dc8c3c1304d3",
+  secret: "3b1eab2fb85492e32a78c347bba5647e1395b57a"
+});
+
 Meteor.methods({
   updateCategories: function () {
     // TODO: see if this method is still necessary
@@ -66,7 +76,39 @@ Meteor.methods({
     removedCategories.forEach(function(categoryId) {
       updateCounts(categoryId);
     });
+  },
+
+  getGitHubDetails : function(user, repo) {
+    var repoInfo = {};
+         
+    var repoDetails = Async.runSync(function(done) {
+      github.repos.get({user: user, repo: repo}, function(err, data) {
+        done(null, data);
+      });
+    });
+    repoInfo.createdAt = repoDetails.result.created_at;
+    repoInfo.description = repoDetails.result.description;
+    repoInfo.forks = repoDetails.result.forks_count;
+    repoInfo.gitURL = repoDetails.result.it_url;
+    repoInfo.homepage = repoDetails.result.homepage;
+    repoInfo.html_url = repoDetails.result.html_url;
+    repoInfo.stars = repoDetails.result.stargazers_count;
+    repoInfo.subscribers = repoDetails.result.subscribers_count;
+    repoInfo.watchers = repoDetails.result.watchers_count;
     
+    var repoReadMe = Async.runSync(function(done) {
+      github.repos.getReadme({user: user, repo: repo}, function(err, data) {
+        done(null, data);
+      });
+    });
+
+    /*if (repoReadMe.result.content) {
+      var readme_base64 = new Buffer(repoReadMe.result.content, 'base64');
+      repoInfo.readme = markdown.toHTML(readme_base64.toString());
+    }*/
+    repoInfo.readme = repoReadMe.result.content;
+    
+    return repoInfo;
   }
   /* -GAURAV */
 });

@@ -145,6 +145,29 @@ postMeta = [
     order: 5
   }
 ];
+
+postStats = [
+  {
+    template: 'postStars',
+    order: 1
+  },
+  {
+    template: 'postForks',
+    order: 3
+  },
+  {
+    template: 'postWatchers',
+    order: 5
+  },
+  {
+    template: 'postContributors',
+    order: 7
+  },
+  {
+    template: 'postReadmeButton',
+    order: 9
+  }
+];
 // ------------------------------ Callbacks ------------------------------ //
 
 postSubmitRenderedCallbacks = [];

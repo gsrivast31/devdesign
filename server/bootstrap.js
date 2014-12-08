@@ -6,11 +6,13 @@ Meteor.startup(function () {
       order: 1,
       slug: 'developers', 
       parent: null,
+      childCount: 0
     },{
       name: "Designers",
-      order: 1,
+      order: 2,
       slug: 'designers', 
       parent: null,
+      childCount: 0
     }];
 
     _.each(data, function(list) {

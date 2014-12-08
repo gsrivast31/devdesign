@@ -36,7 +36,6 @@ mrt:mailchimp
 cmather:handlebars-server
 sacha:spin
 sacha:juice
-chuangbo:marked
 percolatestudio:synced-cron
 npm-container
 matb33:collection-hooks
@@ -71,3 +70,6 @@ devdesign-notifications
 # Accounts Templates
 useraccounts:unstyled
 devdesign-theme-updated
+font-awesome
+chuangbo:marked
+

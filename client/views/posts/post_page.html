@@ -6,6 +6,12 @@
     {{#if body}}
       {{> UI.dynamic template=post_body}}
     {{/if}}
+    {{#if stats}}
+      {{> UI.dynamic template=post_stats}}
+      {{#if readme}}
+        {{> UI.dynamic template=post_readme}}
+      {{/if}}
+    {{/if}}
     {{> UI.dynamic template=comment_form}}
     {{> UI.dynamic template=comment_list}}
   </div>
