@@ -15,9 +15,9 @@
             {{#each topCategories}}
               <option value="{{_id}}">{{name}}</option>
               {{#each firstLevelCategory}}
-                <option value="{{_id}}">&nbsp;&nbsp;{{name}}</option>
+                <option value="{{_id}}">&nbsp;&nbsp;&nbsp;&nbsp;{{name}}</option>
                 {{#each secondLevelCategory}}
-                  <option value="{{_id}}">&nbsp;&nbsp;&nbsp;&nbsp;{{name}}</option>
+                  <option value="{{_id}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{name}}</option>
                 {{/each}}
               {{/each}}
             {{/each}}

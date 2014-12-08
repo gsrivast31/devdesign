@@ -1,7 +1,10 @@
 Meteor.startup(function () {
   Template[getTemplate('categories')].helpers({
     topCategories: function(){
-      return [Session.get('developerId'), Session.get('designerId')];
+      return [
+        Categories.findOne(Session.get('developerId')), 
+        Categories.findOne(Session.get('designerId'))
+      ];
     },
     firstLevelCategory: function() {
       return Categories.find({parent: this._id}, {sort: {order: 1, name: 1}});

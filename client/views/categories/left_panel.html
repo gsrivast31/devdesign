@@ -1,6 +1,11 @@
 <template name="leftPanel">
 		<section class="left-panel"> 
 		{{> UI.dynamic template=signIn}}
+
+		{{#if correctView}}
 		{{> UI.dynamic template=categoriesList}}
+		{{else}}
+		<a class="btn-secondary home-link" href="/">All Libraries</a>
+		{{/if}}
 		</section>
 </template>      

@@ -25,10 +25,16 @@ select {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a.home-link {
+  text-align: center;
+  width: 80%;
+  margin: 10%;
+}
+
 .mobile-nav {
   width: 250px;
 
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Noteworthy", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: 400;
   color: #333333;
   font-size: 16px;
@@ -37,7 +43,6 @@ select {
   background-image: linear-gradient(to bottom, #315481, #918e82 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
-
 }
 
 .nav-button {
@@ -108,8 +113,23 @@ a.view-item.active {
 }
 
 .post-stats .post-stat-item {
-  width: 16%;
+  width: 20%;
   display: inline-block;
+}
+
+.post-readme-button {
+  display: block;
+}
+
+@media screen and (min-width: 40em) {
+  .post-stats .post-stat-item {
+    width: 16%;
+    display: inline-block;
+  }
+
+  .post-readme-button {
+    display: inline-block;
+  }
 }
 
 .post-stats, .post-body {
@@ -207,7 +227,7 @@ a#editCategory {
 	margin-bottom: 0px;
 	margin-top: 0px;
 	width: 250px;
-	height: auto;
+	height: 100%;
 }
 
 .left-panel .list-categories .list-category {
