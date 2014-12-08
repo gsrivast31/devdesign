@@ -739,10 +739,8 @@ body {
 .mobile-nav {
   position: fixed;
   overflow: auto;
-  left: -200px;
-  left: calc((100% - 60px) * -1);
-  width: 200px;
-  width: calc(100% - 60px);
+  left: -250px;
+  width: 250px;
   height: 100%;
   top: 0px;
   bottom: 0px;
@@ -777,8 +775,8 @@ body {
     overflow: hidden; }
     /* line 46, ../scss/specific/_mobile_nav.scss */
     .mobile-nav-open .outer-wrapper .inner-wrapper {
-      left: 200px;
-      left: calc(100% - 60px); }
+      left: 250px;
+    }
 
 @media screen and (max-width: 40em) {
   /* line 56, ../scss/specific/_mobile_nav.scss */

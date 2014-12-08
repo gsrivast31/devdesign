@@ -1,14 +1,5 @@
-var MENU_KEY = 'menuOpen';
-Session.setDefault(MENU_KEY, false);
-
-var USER_MENU_KEY = 'userMenuOpen';
-Session.setDefault(USER_MENU_KEY, false);
-
 var CATEGORY_MENU_KEY = 'categoryMenuOpen';
 Session.setDefault(CATEGORY_MENU_KEY, false);
-
-var SHOW_CONNECTION_ISSUE_KEY = 'showConnectionIssue';
-Session.setDefault(SHOW_CONNECTION_ISSUE_KEY, false);
 
 var USER_LIST_OPEN = 'userListOpen';
 Session.setDefault(USER_LIST_OPEN, '');
@@ -16,10 +7,9 @@ Session.setDefault(USER_LIST_OPEN, '');
 var USER_LIST_COLLAPSED = 'userListCollapsed';
 Session.setDefault(USER_LIST_COLLAPSED, true);
 
-var CONNECTION_ISSUE_TIMEOUT = 5000;
-
 var TOP_CATEGORY = 'topCategory';
 var TOP_CATEGORY_FIRST_CHILD = 'topCategoryFirstChild';
+var USER_MENU_KEY = 'userMenuOpen';
 
 Meteor.startup(function () {
 
@@ -28,30 +18,13 @@ Meteor.startup(function () {
   };
 
   var hasParent = function(categoryId) {
-    return Categories.findOne({parent: {$exists: true}, _id:categoryId}) != undefined;
+    var category = Categories.findOne({_id:categoryId});
+    return (category.parent && category.parent === Session.get(TOP_CATEGORY));
   };
 
   Template[getTemplate('categoriesList')].helpers({
-    menuOpen: function() {
-      return Session.get(MENU_KEY) && 'menu-open';
-    },
-    cordova: function() {
-      return Meteor.isCordova && 'cordova';
-    },
-    userMenuOpen: function() {
-      return Session.get(USER_MENU_KEY);
-    },
     categoryMenuOpen: function() {
       return Session.get(CATEGORY_MENU_KEY);
-    },
-    isLoggedIn: function () {
-    return !!Meteor.user();
-    },
-    username: function () {
-      return getDisplayName(Meteor.user());
-    },
-    profileUrl: function () {
-      return getProfileUrl(Meteor.user());
     },
     hasCategories: function(){
       return typeof Categories !== 'undefined' && Categories.find().count();
@@ -127,31 +100,11 @@ Meteor.startup(function () {
   });
 
   Template[getTemplate('categoriesList')].events({
-  
-    'click .js-menu': function() {
-      Session.set(MENU_KEY, ! Session.get(MENU_KEY));
-    },
-
-    'click .content-overlay': function(event) {
-      Session.set(MENU_KEY, false);
-      event.preventDefault();
-    },
-
-    'click .js-user-menu': function(event) {
-      Session.set(USER_MENU_KEY, ! Session.get(USER_MENU_KEY));
-      Session.set(CATEGORY_MENU_KEY, false);
-      // stop the menu from closing
-      event.stopImmediatePropagation();
-    },
-
     'click .js-category-menu': function(event) {
       Session.set(CATEGORY_MENU_KEY, ! Session.get(CATEGORY_MENU_KEY));
       Session.set(USER_MENU_KEY, false);
+      // stop the menu from closing
       event.stopImmediatePropagation();
-    },
-
-    'click #menu a': function() {
-      Session.set(MENU_KEY, false);
     },
 
     'click .js-top-category': function(event) {

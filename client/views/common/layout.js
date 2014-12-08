@@ -5,8 +5,8 @@ Template[getTemplate('layout')].helpers({
   nav: function () {
     return getTemplate('nav');
   },
-  categoriesList: function () {
-    return getTemplate('categoriesList');
+  leftPanel: function () {
+    return getTemplate('leftPanel');
   },
   error: function () {
     return getTemplate('error');

@@ -8,12 +8,16 @@
             {{> UI.dynamic template=getTemplate}}
           </li>
         {{/each}}
+
         {{#each secondaryNav}}
           <li>
             {{> UI.dynamic template=getTemplate}}
           </li>
         {{/each}}
       </ul>
+
+      {{> UI.dynamic template=leftPanel}}
+      
     </div>
   </div>
 </template>

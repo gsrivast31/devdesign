@@ -16,6 +16,9 @@ Template[getTemplate('mobile_nav')].helpers({
   },
   userMenu: function () {
     return getTemplate('userMenu');
+  },
+  leftPanel: function () {
+    return getTemplate('leftPanel');
   }
 });
 

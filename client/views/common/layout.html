@@ -3,7 +3,9 @@
 {{> UI.dynamic template=css}}
   <div class="outer-wrapper {{currentPage}}">
     {{> UI.dynamic template=mobile_nav}}
-    {{> UI.dynamic template=categoriesList}}
+    <div class="desktop-only">
+    {{> UI.dynamic template=leftPanel}}
+    </div>
     <div class="inner-wrapper template-{{pageName}}">
       {{> UI.dynamic template=nav}}
       <div class="content-wrapper">
