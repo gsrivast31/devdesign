@@ -10,6 +10,7 @@ Session.setDefault(SHOW_CONNECTION_ISSUE_KEY, false);
 var CONNECTION_ISSUE_TIMEOUT = 5000;
 
 var CATEGORY_MENU_KEY = 'categoryMenuOpen';
+var TOP_CATEGORY_MENU_KEY = 'topCategoryMenuOpen';
 
 Meteor.startup(function () {
 
@@ -49,6 +50,7 @@ Meteor.startup(function () {
     'click .js-user-menu': function(event) {
       Session.set(USER_MENU_KEY, ! Session.get(USER_MENU_KEY));
       Session.set(CATEGORY_MENU_KEY, false);
+      Session.set(TOP_CATEGORY_MENU_KEY, false);
       // stop the menu from closing
       event.stopImmediatePropagation();
     },

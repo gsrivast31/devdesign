@@ -42,9 +42,6 @@ viewParameters.category = function (terms) {
   order: 3
 });*/
   
-// push "categoriesMenu" template to primaryNav
-primaryNav.push('topCategory');
-
 // push "categories" property to addToPostSchema, so that it's later added to postSchema
 addToPostSchema.push(
   {

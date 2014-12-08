@@ -1,7 +1,7 @@
 <template name="leftPanel">
 		<section class="left-panel"> 
 		{{> UI.dynamic template=signIn}}
-
+		{{> UI.dynamic template=topCategoryMenu}}
 		{{#if correctView}}
 		{{> UI.dynamic template=categoriesList}}
 		{{else}}

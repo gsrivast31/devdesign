@@ -34,7 +34,7 @@ a.home-link {
 .mobile-nav {
   width: 250px;
 
-  font-family: "Noteworthy", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: 400;
   color: #333333;
   font-size: 16px;
@@ -56,6 +56,13 @@ a.home-link {
   color: rgb(221, 52, 22);
   font-weight: bold;
   font-style: italic;
+}
+
+.header .logo a, .header .logo a:visited {
+  color: rgb(51, 85, 129);
+  font-family: "Noteworthy", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 .js-top-category {

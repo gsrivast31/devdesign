@@ -11,6 +11,7 @@ var TOP_CATEGORY = 'topCategory';
 var TOP_CATEGORY_FIRST_CHILD_DEVELOPER = 'topCategoryFirstChildDeveloper';
 var TOP_CATEGORY_FIRST_CHILD_DESIGNER = 'topCategoryFirstChildDesigner';
 var USER_MENU_KEY = 'userMenuOpen';
+var TOP_CATEGORY_MENU_KEY = 'topCategoryMenuOpen';
 
 Meteor.startup(function () {
 
@@ -134,6 +135,7 @@ Meteor.startup(function () {
     'click .js-category-menu': function(event) {
       Session.set(CATEGORY_MENU_KEY, ! Session.get(CATEGORY_MENU_KEY));
       Session.set(USER_MENU_KEY, false);
+      Session.set(TOP_CATEGORY_MENU_KEY, false);
       // stop the menu from closing
       event.stopImmediatePropagation();
     },

@@ -3,6 +3,9 @@ Meteor.startup(function () {
     signIn: function() {
       return getTemplate('signIn');
     },
+    topCategoryMenu: function() {
+      return getTemplate('topCategoryMenu');
+    },
     categoriesList: function() {
       return getTemplate('categoriesList');
     },

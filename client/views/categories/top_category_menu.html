@@ -1,0 +1,17 @@
+<template name="topCategoryMenu">
+	<div class="btns-group-vertical">
+		<a href="#" class="js-top-category-menu btn-secondary">
+			{{#if topCategoryMenuOpen}}
+			<span class="icon-up"></span>
+			{{else}}
+			<span class="icon-down"></span>
+			{{/if}}
+			{{currentTopCategory}}
+		</a>
+		{{#if topCategoryMenuOpen}}
+			{{#each topCategories}}
+			<span class="btn-secondary js-top-category">{{name}}</span>
+			{{/each}}
+		{{/if}}
+	</div>	
+</template>      
