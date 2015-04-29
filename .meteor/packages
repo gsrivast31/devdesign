@@ -37,7 +37,7 @@ cmather:handlebars-server
 sacha:spin
 sacha:juice
 percolatestudio:synced-cron
-npm-container
+#npm-container
 matb33:collection-hooks
 djedi:sanitize-html
 rajit:bootstrap3-datepicker
@@ -70,6 +70,8 @@ devdesign-notifications
 # Accounts Templates
 useraccounts:unstyled
 devdesign-theme-updated
-font-awesome
+#font-awesome
 chuangbo:marked
 
+
+npm-container

@@ -46,8 +46,10 @@ Meteor.startup(function () {
 
   var developerId = Categories.findOne({slug: 'developers'})._id;
   var designerId = Categories.findOne({slug: 'designers'})._id;
+  var startupId = Categories.findOne({slug: 'startups'})._id;
 
   Session.set('developerId', developerId);
   Session.set('designerId', designerId);
+  Session.set('startupId', startupId);
   Session.set('topCategory', developerId);
 });

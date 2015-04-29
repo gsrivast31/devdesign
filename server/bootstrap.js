@@ -6,6 +6,8 @@ Meteor.startup(function () {
       name: "Developers", order: 1, slug: 'developers', parent: null, childCount: 0
     },{
       name: "Designers", order: 2, slug: 'designers', parent: null, childCount: 0
+    },{
+      name: "Startups", order: 3, slug: 'startups', parent: null, childCount: 0
     }];
 
     _.each(data, function(list) {

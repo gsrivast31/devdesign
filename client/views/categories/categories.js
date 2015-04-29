@@ -3,7 +3,8 @@ Meteor.startup(function () {
     topCategories: function(){
       return [
         Categories.findOne(Session.get('developerId')), 
-        Categories.findOne(Session.get('designerId'))
+        Categories.findOne(Session.get('designerId')),
+        Categories.findOne(Session.get('startupId'))
       ];
     },
     firstLevelCategory: function() {

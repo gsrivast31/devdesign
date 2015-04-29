@@ -10,6 +10,7 @@ Session.setDefault(USER_LIST_COLLAPSED, true);
 var TOP_CATEGORY = 'topCategory';
 var TOP_CATEGORY_FIRST_CHILD_DEVELOPER = 'topCategoryFirstChildDeveloper';
 var TOP_CATEGORY_FIRST_CHILD_DESIGNER = 'topCategoryFirstChildDesigner';
+var TOP_CATEGORY_FIRST_CHILD_STARTUP = 'topCategoryFirstChildStartup';
 var USER_MENU_KEY = 'userMenuOpen';
 var TOP_CATEGORY_MENU_KEY = 'topCategoryMenuOpen';
 
@@ -32,11 +33,17 @@ Meteor.startup(function () {
     return Session.get('designerId') === Session.get(TOP_CATEGORY);
   };
 
+  var isTopCategoryStartup = function() {
+    return Session.get('startupId') === Session.get(TOP_CATEGORY);
+  };
+
   var topCategoryFirstChild = function() {
     if (isTopCategoryDeveloper()) {
       return Session.get(TOP_CATEGORY_FIRST_CHILD_DEVELOPER);
     } else if (isTopCategoryDesigner()) {
       return Session.get(TOP_CATEGORY_FIRST_CHILD_DESIGNER);
+    } else if (isTopCategoryStartup()) {
+      return Session.get(TOP_CATEGORY_FIRST_CHILD_STARTUP);
     } else {
       return '';
     }
@@ -147,6 +154,8 @@ Meteor.startup(function () {
         Session.set(TOP_CATEGORY_FIRST_CHILD_DEVELOPER, this._id);
       } else if (isTopCategoryDesigner()) {
         Session.set(TOP_CATEGORY_FIRST_CHILD_DESIGNER, this._id);
+      } else if (isTopCategoryStartup()) {
+        Session.set(TOP_CATEGORY_FIRST_CHILD_STARTUP, this._id);
       }
       
       Session.set(CATEGORY_MENU_KEY, false);
